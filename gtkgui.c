@@ -2,7 +2,6 @@
 // gcc `pkg-config --cflags --libs gtk+-2.0` gtkgui.c -o GTK_start -lwiringPi
 // -lwiringPi
 #include <gtk/gtk.h>
-#include "PJ_RPI.h"
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -100,7 +99,7 @@ int main(int argc, char *argv[])
     pinMode(18, INPUT);
     pinMode(23, INPUT);
     pullUpDnControl(18, PUD_DOWN);
-    pullUpDnControl(23, PUD_UP);
+    pullUpDnControl(23, PUD_DOWN);
 
     gtk_init(&argc, &argv);
     // Window
@@ -119,7 +118,7 @@ int main(int argc, char *argv[])
     GtkWidget *lblLedStatus = gtk_label_new("Leds status: Off");
     GtkWidget *lblSubTitle = gtk_label_new("Choose a output gpio:");
     GtkWidget *lblBtnStatus1 = gtk_label_new("Button 1 status");
-    GtkWidget *lblBtnStatus2 = gtk_label_new("Button 2 status");//Button 2 status
+    GtkWidget *lblBtnStatus2 = gtk_label_new("Button 2 status"); // Button 2 status
     GtkWidget *lblInputStatus = gtk_label_new("input status:");
 
     GtkWidget *input = gtk_entry_new();
@@ -129,6 +128,7 @@ int main(int argc, char *argv[])
     g_signal_connect(btnGpio17, "clicked", G_CALLBACK(toggleLed1), lblLedStatus);
     g_signal_connect(btnGpio27, "clicked", G_CALLBACK(toggleLed2), lblLedStatus);
     g_signal_connect(btnInputs, "clicked", G_CALLBACK(buttonPressed1), lblBtnStatus1);
+    g_signal_connect(btnInputs, "clicked", G_CALLBACK(buttonPressed2), lblBtnStatus2);
     g_signal_connect(win, "delete_event", G_CALLBACK(end_program), NULL);
 
     gtk_window_set_position(GTK_WINDOW(win), GTK_WIN_POS_CENTER);

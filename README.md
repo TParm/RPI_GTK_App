@@ -7,7 +7,7 @@
 ## Opdracht5_Embedded Sytems
 
 - **Programming language**: C
-- **Library: WiringPi
+- **Library**: WiringPi
 
 ---
 

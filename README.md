@@ -8,7 +8,7 @@
 
 - **Programming language**: C
 - **Library: WiringPi
-- 
+
 ---
 
 ## Development
